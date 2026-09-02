@@ -37,7 +37,7 @@ def reLU(z):
     return np.maximum(z,0)
 
 def softmax(z):
-    A= np.exp(z)/ sum(np.exp(z), axis=0, jkeepdims=True) # fixed a bug where only sums columns now
+    A= np.exp(z)/ sum(np.exp(z), axis=0, keepdims=True) # fixed a bug where only sums columns now
     return A
 
 def forward_prop(W1, b1, W2, b2, X):
