@@ -1,0 +1,30 @@
+import pandas as pd 
+import numpy as np  
+import math
+import random
+data = pd.read_csv('C:\Users\LENOVO\Documents\GitHub\Postman\train.csv\train.csv')
+
+def sig(z):
+    # sigmoid
+    return 1.0/(1.0 +exp(-z))
+
+def sigdash(z):
+    # derivative of sig is sig*(1-sig)
+    return sig(z) (1-sig(z))
+
+class Network:
+    def init():
+        w1=np.random.rand(10,784)
+        b1=np.random.rand(10,1)
+        w2=np.random.rand(10,10)
+        b2=np.random.rand(10,1)
+    
+    def reLU(z):
+        return max(z,0)
+    
+    def softmax():
+        A= np.exp(z)/ sum(np.exp(z))
+        return A
+    
+    
+    
