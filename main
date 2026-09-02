@@ -1,9 +1,11 @@
 import pandas as pd 
 import numpy as np  
-import math
 import random
-data = pd.read_csv('C:\Users\LENOVO\Documents\GitHub\Postman\train.csv\train.csv')
+data = pd.read_csv(r'C:\Users\LENOVO\Documents\GitHub\Postman\train.csv')
 
+class Inputs:
+    data=pd.read_csv(r'C:\Users\LENOVO\Documents\GitHub\Postman\test.csv')
+    
 def sig(z):
     # sigmoid
     return 1.0/(1.0 +exp(-z))
@@ -20,11 +22,11 @@ class Network:
         b2=np.random.rand(10,1)
     
     def reLU(z):
-        return max(z,0)
+        return np.maximum(z,0)
     
-    def softmax():
+    def softmax(z):
         A= np.exp(z)/ sum(np.exp(z))
         return A
     
-    
+
     
