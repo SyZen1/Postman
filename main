@@ -2,31 +2,57 @@ import pandas as pd
 import numpy as np  
 import random
 data = pd.read_csv(r'C:\Users\LENOVO\Documents\GitHub\Postman\train.csv')
+data2=pd.read_csv(r'C:\Users\LENOVO\Documents\GitHub\Postman\test.csv')
+data = np.array(data)
+m, n = data.shape
+np.random.shuffle(data) # shuffle before splitting into dev and training sets
 
-class Inputs:
-    data=pd.read_csv(r'C:\Users\LENOVO\Documents\GitHub\Postman\test.csv')
-    
+data_dev = data[0:1000].T
+Y_dev = data_dev[0]
+X_dev = data_dev[1:n]
+X_dev = X_dev / 255.
+
+data_train = data[1000:m].T
+Y_train = data_train[0]
+X_train = data_train[1:n]
+X_train = X_train / 255.
+_,m_train = X_train.shape
+
 def sig(z):
     # sigmoid
-    return 1.0/(1.0 +exp(-z))
+    return 1.0/(1.0 +np.exp(-z))
 
 def sigdash(z):
     # derivative of sig is sig*(1-sig)
-    return sig(z) (1-sig(z))
+    return sig(z)*(1-sig(z))
 
-class Network:
-    def init():
-        w1=np.random.rand(10,784)
-        b1=np.random.rand(10,1)
-        w2=np.random.rand(10,10)
-        b2=np.random.rand(10,1)
+def init():
+    w1=np.random.rand(10,784) -0.5
+    b1=np.random.rand(10,1) -0.5
+    w2=np.random.rand(10,10) -0.5
+    b2=np.random.rand(10,1) -0.5
+    return w1,b1,w2,b2
+
+def reLU(z):
+    return np.maximum(z,0)
+
+def softmax(z):
+    A= np.exp(z)/ sum(np.exp(z), axis=0, jkeepdims=True) # fixed a bug where only sums columns now
+    return A
+
+def forward_prop(W1, b1, W2, b2, X):
+    Z1 = W1.dot(X) + b1
+    A1 = reLU(Z1)
+    Z2 = W2.dot(A1) + b2
+    A2 = softmax(Z2)
+    return Z1, A1, Z2, A2
+
+def ReLU_deriv(Z):
+    return Z > 0
+
+
     
-    def reLU(z):
-        return np.maximum(z,0)
-    
-    def softmax(z):
-        A= np.exp(z)/ sum(np.exp(z))
-        return A
-    
+
+
 
     
