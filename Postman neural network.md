@@ -2,6 +2,10 @@ Cost Function
 
 ## Neural Network with Manual Backpropagation
 
+![image1](I1.png)
+![image1](I2.png)
+![image1](I3.png)
+
 
 This is my attempt at creating a neural network that can identify numbers successfully
 using the MNIST dataset (reduced).
@@ -74,6 +78,8 @@ A(1) = g(Z(1) ) (ReLU (Z(1))
 
 A(Z) = softmax (Z(1)
 
+![image](I4.png)
+
 
 This function is to ensure that the stepwise function that we are doing ( 1 if the pixel is
 dark and 0 if the pixel is light is softened down into a value BETWEEN zero and one so that
@@ -96,6 +102,8 @@ has multiple weird weights and biases and has been training its neurons since th
 were born but this is how I understood it. I thought Michael Nielsen explained this very
 well with the perceptron girlfriend analogy.
 
+![image1](I5.png)
+![image1](I6.png)
 
 The second layer is a sigmoid function, followed by a ReLU.
 
